@@ -28,10 +28,6 @@
     border-radius: 24px;
     overflow: hidden;
     max-height: 600px;
-    .imageContent {
-      width: 100%;
-      object-position: center;
-    }
   }
   .contain {
     .title {
@@ -48,14 +44,18 @@
       }
     }
   }
+  .imageContent {
+    width: 100%;
+    object-position: center;
+  }
   .footer {
-    width: calc(100% - 16px * 2);
+    width: calc(1000px - 16px * 2);
     background: $pear;
     border-radius: 100px;
     color: #fff;
     padding: 8px 8px;
-    position: absolute;
-    bottom: 16px;
+    position: fixed;
+    bottom: 48px;
     display: flex;
     justify-content: end;
     align-items: center;

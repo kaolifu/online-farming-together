@@ -15,18 +15,6 @@ interface Props {
 }
 
 export default function ItemPage(props: Props) {
-  const { itemId } = props.params
-  const {
-    title,
-    color,
-    image,
-    price,
-    maturity,
-    packageSize,
-    place,
-    describe,
-  } = data.find((item) => item.itemId === itemId)
-
   const [count, setCount] = useState(0)
   const handleCount = (e: any) => {
     const newCount = parseInt(e.target.value, 10)
@@ -34,6 +22,22 @@ export default function ItemPage(props: Props) {
       setCount(newCount)
     }
   }
+
+  const { itemId } = props.params
+  const item = data.find((item) => item.itemId === itemId)
+  if (!item) return
+  const {
+    type,
+    title,
+    color,
+    coverImage,
+    images,
+    price,
+    maturity,
+    packageSize,
+    place,
+    describe,
+  } = item
 
   return (
     <main>
@@ -47,7 +51,7 @@ export default function ItemPage(props: Props) {
           <div className={s.image}>
             <Image
               alt='item'
-              src={image}
+              src={coverImage}
               width={360}
               height={360}
               className={s.imageContent}
@@ -67,18 +71,30 @@ export default function ItemPage(props: Props) {
             {place ? <p>{place}</p> : null}
             {describe ? <p>{describe}</p> : null}
           </div>
-          <div className={s.footer}>
-            <HelpRoundedIcon />
-            <input
-              type='number'
-              placeholder='0'
-              onChange={handleCount}
-              value={count}
+          {images?.map((image, index) => (
+            <Image
+              key={index}
+              alt='image'
+              src={image}
+              width={360}
+              height={360}
+              className={s.imageContent}
             />
-            <p>合计：{count * price}元</p>
-            <button className={`${s.btnCart}`}>加入购物车</button>
-            <button className={`${s.btnBuyNow}`}>立即购买</button>
-          </div>
+          ))}
+          {type === 'product' && (
+            <div className={s.footer}>
+              <HelpRoundedIcon />
+              <input
+                type='number'
+                placeholder='0'
+                onChange={handleCount}
+                value={count}
+              />
+              <p>合计：{price !== undefined ? count * price : NaN}元</p>
+              <button className={`${s.btnCart}`}>加入购物车</button>
+              <button className={`${s.btnBuyNow}`}>立即购买</button>
+            </div>
+          )}
         </div>
       </div>
     </main>
