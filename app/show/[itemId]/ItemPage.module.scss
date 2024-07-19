@@ -1,0 +1,84 @@
+@import 'app/styles/styles.scss';
+
+.backBtn {
+  position: fixed;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: $pear;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0 10px #ccc;
+  }
+}
+.card {
+  width: 1000px;
+  margin: 32px auto;
+  border-radius: 32px;
+  box-shadow: 0 0 16px #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 16px 96px 16px;
+  position: relative;
+  .image {
+    border-radius: 24px;
+    overflow: hidden;
+    max-height: 600px;
+    .imageContent {
+      width: 100%;
+      object-position: center;
+    }
+  }
+  .contain {
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      h2 {
+        font-size: 36px;
+      }
+      h3 {
+        span {
+          font-size: 36px;
+        }
+      }
+    }
+  }
+  .footer {
+    width: calc(100% - 16px * 2);
+    background: $pear;
+    border-radius: 100px;
+    color: #fff;
+    padding: 8px 8px;
+    position: absolute;
+    bottom: 16px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 16px;
+    p {
+      width: 108px;
+      text-align: center;
+    }
+    input[type='number'] {
+      width: 36px;
+      color: #000;
+      text-align: center;
+      border-radius: 4px;
+    }
+    button {
+      padding: 8px 16px;
+      border-radius: 100px;
+    }
+    .btnCart {
+      background: $mango-yellow;
+    }
+    .btnBuyNow {
+      background: $orange;
+    }
+  }
+}
