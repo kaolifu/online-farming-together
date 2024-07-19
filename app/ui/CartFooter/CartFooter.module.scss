@@ -1,0 +1,40 @@
+@import 'app/styles/styles.scss';
+
+.footer {
+  width: calc(1000px - 16px * 2);
+  background: $pear;
+  border-radius: 100px;
+  color: #fff;
+  padding: 8px 8px;
+  position: fixed;
+  bottom: 48px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 16px;
+  p {
+    width: 108px;
+    text-align: center;
+  }
+  input[type='number'] {
+    width: 36px;
+    color: #000;
+    text-align: center;
+    border-radius: 4px;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button{
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  button {
+    padding: 8px 16px;
+    border-radius: 100px;
+  }
+  .btnCart {
+    background: $mango-yellow;
+  }
+  .btnBuyNow {
+    background: $orange;
+  }
+}

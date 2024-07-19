@@ -1,12 +1,14 @@
 import Image from 'next/image'
 import s from './Header.module.scss'
 import Link from 'next/link'
-import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
 import NotificationsRoundedIcon from '@mui/icons-material/NotificationsRounded'
 import MessageRoundedIcon from '@mui/icons-material/MessageRounded'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded'
-import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
+import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded'
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
+
+import BasicMenu from '../AnchorMenu/AnchorMenu'
 export default function Header() {
   return (
     <>
@@ -41,7 +43,12 @@ export default function Header() {
               <ShoppingCartRoundedIcon fontSize='large' />
             </div>
             <div className={s.btn}>
-              <AccountCircleRoundedIcon fontSize='large' />
+              <BasicMenu anchor={<AccountCircleRoundedIcon fontSize='large' />}>
+                <li>我的主页</li>
+                <li>
+                  <Link href={'/'}>登出账户</Link>
+                </li>
+              </BasicMenu>
             </div>
           </div>
         </nav>

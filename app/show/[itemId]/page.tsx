@@ -7,6 +7,8 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded'
 import HelpRoundedIcon from '@mui/icons-material/HelpRounded'
 import Link from 'next/link'
 import { useState } from 'react'
+import VideoPlayer from '@/app/ui/VideoPlayer/VideoPlayer'
+import CartFooter from '@/app/ui/CartFooter/CartFooter'
 
 interface Props {
   params: {
@@ -15,14 +17,6 @@ interface Props {
 }
 
 export default function ItemPage(props: Props) {
-  const [count, setCount] = useState(0)
-  const handleCount = (e: any) => {
-    const newCount = parseInt(e.target.value, 10)
-    if (newCount >= 0) {
-      setCount(newCount)
-    }
-  }
-
   const { itemId } = props.params
   const item = data.find((item) => item.itemId === itemId)
   if (!item) return
@@ -32,6 +26,7 @@ export default function ItemPage(props: Props) {
     color,
     coverImage,
     images,
+    video,
     price,
     maturity,
     packageSize,
@@ -49,13 +44,17 @@ export default function ItemPage(props: Props) {
         </div>
         <div className={s.card}>
           <div className={s.image}>
-            <Image
-              alt='item'
-              src={coverImage}
-              width={360}
-              height={360}
-              className={s.imageContent}
-            />
+            {video ? (
+              <VideoPlayer poster={coverImage} source={video} />
+            ) : (
+              <Image
+                alt='item'
+                src={coverImage}
+                width={360}
+                height={360}
+                className={s.imageContent}
+              />
+            )}
           </div>
           <div className={s.contain}>
             <div className={s.title}>
@@ -82,18 +81,7 @@ export default function ItemPage(props: Props) {
             />
           ))}
           {type === 'product' && (
-            <div className={s.footer}>
-              <HelpRoundedIcon />
-              <input
-                type='number'
-                placeholder='0'
-                onChange={handleCount}
-                value={count}
-              />
-              <p>合计：{price !== undefined ? count * price : NaN}元</p>
-              <button className={`${s.btnCart}`}>加入购物车</button>
-              <button className={`${s.btnBuyNow}`}>立即购买</button>
-            </div>
+            <CartFooter price={price} />
           )}
         </div>
       </div>

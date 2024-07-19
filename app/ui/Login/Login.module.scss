@@ -1,3 +1,5 @@
+@import 'app/styles/styles.scss';
+
 .box {
   form {
     inset: 2px;
@@ -14,7 +16,7 @@
         outline: none;
         border: none;
         box-shadow: none;
-        color: #3E5426;
+        color: $theme;
         font-size: 1em;
         letter-spacing: 0.05em;
         transition: 0.5s;
@@ -64,7 +66,7 @@
         color: #fff;
         transition: .3s;
         &:hover{
-          font-size: 1em;
+          color: $theme;
         }
       }
     }
@@ -72,13 +74,15 @@
       width: 100%;
       padding: 8px 0;
       background: #fff;
-      color: #3E5426;
+      color: $theme;
       cursor: pointer;
       font-size: .9em;
       border-radius: 4px;
       margin-top: 16px;
-      &:active{
-        opacity: .8;
+      transition: .3s;
+      &:hover{
+        background: $theme;
+        color: #fff;
       }
     }
   }

@@ -6,18 +6,40 @@ export default function Home() {
   return (
     <main>
       <div className={s.container}>
-        <div className={s.background}>
-          <h1>
+        <div className={s.bgFrame}>
+          <div className={s.background}></div>
+          <div className={s.loginForm}>
+          <Login />
+        </div>
+        </div>
+        <div className={s.framePosition}>
+          <div className={s.frame}>
+            <div className={s.logoTop}>
+              <Image
+                alt='logo'
+                src='/assets/logo_top.png'
+                width={360}
+                height={360}
+                className={s.logo}
+              />
+            </div>
             <Image
               alt='logo'
-              src='/assets/logo_withText_white.png'
+              src='/assets/logo_bottom.png'
               width={360}
               height={360}
-              className={s.logoContain}
+              className={s.logo}
             />
-          </h1>
-          {/* <Image alt='logo' src='/assets/logo_text_white.png' width={240} height={240} className={s.logoText}/> */}
-          <Login/>
+            <div className={s.logoText}>
+              <Image
+                alt='logo'
+                src='/assets/logo_text.png'
+                width={360}
+                height={360}
+                className={s.logo}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </main>

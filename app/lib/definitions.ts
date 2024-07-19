@@ -5,10 +5,16 @@ export type Item = {
   color: string
   coverImage: string
   images?:string[]
+  video?:string
   price?: number
   maturity?: string
   packageSize?: string
   place?: string
   describe?: string
   text?:string
+}
+
+export type User = {
+  userName:string
+  password:string
 }
